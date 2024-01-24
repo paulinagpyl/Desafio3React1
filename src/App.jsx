@@ -10,11 +10,11 @@ function App() {
   const [data, setData] = useState(db)
   const [dataFilter, setDataFilter] = useState(data)
 
-  /* 
-  const[alert, setAlert] =useState({
-    texto='',
-    tipo='',
-    estado=false
+  
+  const [alert, setAlert] =useState({
+    texto:'',
+    tipo:'',
+    estado:false
   })
 
   const addAlert =(newAlert)=>{
@@ -23,12 +23,12 @@ function App() {
     setTimeOut(()=>{
       setAlert({
         texto:'',
-        tipo='',
-        estado=false
+        tipo:'',
+        estado:false
       });
     },5000);
   };
-  */
+  
 
   return (
     <>
@@ -44,8 +44,18 @@ function App() {
       dataFilter={dataFilter}
       setDataFilter={setDataFilter}
       />
-      <Formulario/>
-      <Alert/>
+      <Formulario
+        className="formulario"
+        addAlert={addAlert}
+        data={data}
+        setData={setData}
+        dataFilter={dataFilter}
+        setDataFilter={setDataFilter}
+      />
+      <Alert
+        className="alert"
+        alerta={alert}
+      />
     </div>
     </>
   )
