@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Formulario = ({ data, setData, dataFilter, setDataFilter, addAlert }) => {
-  //inicializa lo que recibe
+const Formulario = ({ addAlert, setData, data, setDataFilter, dataFilter }) => {
   const [datosColaborador, setDatosColaborador] = useState({
     nombre: "",
     correo: "",
@@ -22,9 +21,11 @@ const Formulario = ({ data, setData, dataFilter, setDataFilter, addAlert }) => {
     if (e.target.id === 'inputEdad') {
       setDatosColaborador({ ...datosColaborador, edad: e.target.value });
     }
+
     if (e.target.id === 'inputCargo') {
       setDatosColaborador({ ...datosColaborador, cargo: e.target.value });
     }
+    
     if (e.target.id === 'inputTelefono') {
       setDatosColaborador({ ...datosColaborador, telefono: e.target.value });
     }
@@ -32,7 +33,7 @@ const Formulario = ({ data, setData, dataFilter, setDataFilter, addAlert }) => {
 
   const validarDatos = (e) => {
     e.preventDefault();
-    const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const correoRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     const telefonoRegex = /^\d{11}$/;
 
     if (
@@ -67,9 +68,6 @@ const Formulario = ({ data, setData, dataFilter, setDataFilter, addAlert }) => {
         tipo: 'alert-success',
         estado: true,
       });
-      const newId = data.length
-        ? (parseInt(data[data.length - 1].id) + 1).toString()
-        : '0';
 
       setData([...data, { ...datosColaborador, id: newId }]);
       setDataFilter([...dataFilter, { ...datosColaborador, id: newId }]);
@@ -116,7 +114,7 @@ const Formulario = ({ data, setData, dataFilter, setDataFilter, addAlert }) => {
             value={datosColaborador.correo}
             type="email"
             className="form-control"
-            id="inputEmail"
+            id="inputCorreo"
             placeholder="Email del colaborador"
             pattern=".*"
           />
@@ -164,3 +162,5 @@ const Formulario = ({ data, setData, dataFilter, setDataFilter, addAlert }) => {
     </div>
   );
 }
+
+export default Formulario;

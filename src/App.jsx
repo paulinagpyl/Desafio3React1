@@ -6,7 +6,7 @@ import Listado from './components/Listado';
 import Alert from './components/Alert';
 import { db } from './db';
 
-function App() {
+const App = () =>  {
   const [data, setData] = useState(db)
   const [dataFilter, setDataFilter] = useState(data)
 

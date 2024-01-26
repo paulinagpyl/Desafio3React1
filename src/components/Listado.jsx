@@ -1,6 +1,16 @@
 import Table from "react-bootstrap/Table";
 
-const Listado = ({ dataFilter }) => {
+const Listado = ({ dataFilter, setDataFilter, data, setData }) => {
+
+  const borrarColaborador = (id) => {
+    const newData = [...data].filter((colaborador) => colaborador.id !== id);
+    setData(newData);
+
+    const newDataFilter = [...dataFilter].filter(
+      (colaborador) => colaborador.id !== id
+    );
+    setDataFilter(newDataFilter);
+  }
   const colaboradores = dataFilter.map((colaborador) => (
     <tr key={colaborador.id}>
       <td>{colaborador.id}</td>
@@ -10,7 +20,7 @@ const Listado = ({ dataFilter }) => {
       <td>{colaborador.cargo}</td>
       <td>{colaborador.telefono}</td>
       <td>
-        <i className="fas fa-trash-alt"></i>
+        <i className="fas fa-trash-alt" onClick={() => borrarColaborador(colaborador.id)}></i>
       </td>
     </tr>
   ));
