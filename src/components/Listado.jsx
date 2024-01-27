@@ -27,7 +27,7 @@ const Listado = ({ dataFilter, setDataFilter, data, setData }) => {
 
   return (
     <div className="table-responsive col-12 col-lg-8 mb-2 text-center">
-      <Table variant="dark" className="table table-striped">
+      <Table variant="dark" className="table table-striped ">
         <thead>
           <tr>
             <th>Id</th>

@@ -19,19 +19,19 @@ const App = () =>  {
   const addAlert = (newAlert) => {
     setAlert(newAlert);
 
-    setTimeOut(() => {
+    setTimeout(() => {
       setAlert({
         texto: '',
         tipo: '',
         estado: false
       });
-    }, 5000);
+    }, 4000);
   };
 
 
   return (
     <>
-      <h1>Lista de colaboradores</h1>
+      <h1  style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '8px', margin:'0px', backgroundColor:'#e0e0e0' }} > Lista de colaboradores</h1>
       <Buscador
         data={data}
         dataFilter={setDataFilter}
